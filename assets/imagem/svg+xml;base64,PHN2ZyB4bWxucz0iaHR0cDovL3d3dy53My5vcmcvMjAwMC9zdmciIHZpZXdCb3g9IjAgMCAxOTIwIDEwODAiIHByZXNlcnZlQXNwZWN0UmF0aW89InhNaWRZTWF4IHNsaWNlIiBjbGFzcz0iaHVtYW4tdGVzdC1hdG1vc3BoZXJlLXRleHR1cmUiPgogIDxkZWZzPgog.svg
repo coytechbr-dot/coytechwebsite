@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice" class="human-test-atmosphere-texture">
+  <defs>
+    <linearGradient id="coluna" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fb3c8" stop-opacity="0"/>
+      <stop offset="0.14" stop-color="#8fb3c8" stop-opacity="0.5"/>
+      <stop offset="0.36" stop-color="#1f6382"/>
+      <stop offset="0.7" stop-color="#0d2f40"/>
+      <stop offset="0.9" stop-color="#2b7c9c"/>
+      <stop offset="1" stop-color="#15506a"/>
+    </linearGradient>
+    <filter id="desfoque" x="-10%" y="-10%" width="120%" height="130%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+  <g fill="url(#coluna)" filter="url(#desfoque)">
+    <rect x="-400" y="972" width="520" height="188"/>
+    <rect x="150" y="864" width="520" height="296"/>
+    <rect x="700" y="799" width="520" height="361"/>
+    <rect x="1250" y="864" width="520" height="296"/>
+    <rect x="1800" y="972" width="520" height="188"/>
+  </g>
+</svg>

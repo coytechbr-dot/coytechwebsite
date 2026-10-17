@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Consultoria &amp; Serviços Corporativos em Observabilidade | Coytech</title>
+  <meta name="description" content="Pare de descobrir incidentes pelos seus clientes. Tenha controle absoluto da sua infraestrutura 24/7 com Zabbix, Grafana, Prometheus e OpenTelemetry.">
+  <link rel="canonical" href="https://coytech.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Coytech">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Consultoria &amp; Serviços Corporativos em Observabilidade | Coytech">
+  <meta property="og:description" content="Pare de descobrir incidentes pelos seus clientes. Tenha controle absoluto da sua infraestrutura 24/7 com Zabbix, Grafana, Prometheus e OpenTelemetry.">
+  <meta property="og:url" content="https://coytech.com.br/">
+  <meta property="og:image" content="https://coytech.com.br/assets/imagem/noc-monitoring-center.jpg">
+  <meta property="og:image:alt" content="Coytech Observabilidade Estratégica &amp; SRE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Coytech">
+  <meta name="twitter:title" content="Consultoria &amp; Serviços Corporativos em Observabilidade | Coytech">
+  <meta name="twitter:description" content="Pare de descobrir incidentes pelos seus clientes. Tenha controle absoluto da sua infraestrutura 24/7 com Zabbix, Grafana, Prometheus e OpenTelemetry.">
+  <meta name="twitter:image" content="https://coytech.com.br/assets/imagem/noc-monitoring-center.jpg">
+  
+  <link rel="icon" type="image/png" href="assets/imagem/logo-circle.png">
+  <link rel="apple-touch-icon" href="assets/imagem/logo-circle.png">
+  
+  <!-- Fontes Google Sans e Inter -->
+  <link rel="preload" href="fonts/google-sans/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS Oficial Black Design System -->
+  <link rel="stylesheet" href="_astro/BaseLayout.Cypw8gFN.css">
+  <style>
+    [data-tem-cor] .destaque-fundo{background-color:var(--cor-evento);color:var(--cor-evento-texto)}
+    [data-tem-cor] .destaque-texto{color:var(--cor-evento)}
+    [data-tem-cor] .destaque-borda{border-color:var(--cor-evento)}
+    [data-tem-cor] .fundo-suave{background-color:var(--cor-evento-suave)}
+    [data-tem-cor] .bg-lime{background-color:var(--cor-evento);color:var(--cor-evento-texto)}
+    [data-tem-cor] .hover\:bg-lime-strong:hover,[data-tem-cor] .bg-lime-strong{background-color:color-mix(in oklab, var(--cor-evento) 88%, black);color:var(--cor-evento-texto)}
+    [data-tem-cor] .text-lime{color:var(--cor-evento)}
+    [data-tem-cor] :is(input,textarea,select):focus-visible{outline-color:var(--cor-evento);border-color:var(--cor-evento)}
+    .silhueta{filter:grayscale()brightness(0);opacity:.88}
+    .tema-escuro .silhueta{filter:grayscale()brightness(0)invert();opacity:.82}
+  </style>
+  <link rel="stylesheet" href="_astro/EstiloBlack.DNpDmF-b.css">
+  <style>
+    .human-live-pulso{animation:human-live-pulso var(--human-live-pulso-duracao) var(--ease-out-strong) infinite}
+    @keyframes human-live-pulso{0%,to{opacity:1}50%{opacity:var(--human-live-pulso-minimo)}}
+    @media (prefers-reduced-motion:reduce){.human-live-pulso{animation:none}}
+    .black-letreiro{height:var(--black-letreiro-altura);background:var(--black-letreiro-brilho), var(--black-letreiro-fundo);border-bottom:1px solid var(--black-letreiro-linha);position:relative;overflow:hidden}
+    .black-letreiro:after{content:"";inset-block:0;width:var(--black-letreiro-reflexo-largura);background:var(--black-letreiro-reflexo);mix-blend-mode:screen;pointer-events:none;animation:black-letreiro-reflexo var(--black-letreiro-reflexo-ciclo) linear infinite;position:absolute;left:0;transform:translate(-100%)}
+    .black-letreiro-janela{height:100%;mask-image:linear-gradient(90deg, transparent 0%, black var(--black-letreiro-borda), black calc(100% - var(--black-letreiro-borda)), transparent 100%);align-items:center;display:flex}
+    .black-letreiro-trilho{width:max-content;animation:marquee var(--black-letreiro-ciclo) linear infinite;display:flex}
+    .black-letreiro-grupo,.black-letreiro-item{align-items:center;display:flex}
+    .black-letreiro-item{gap:var(--black-letreiro-espaco);padding-right:var(--black-letreiro-espaco);white-space:nowrap}
+    .black-letreiro-texto{font-size:var(--black-letreiro-texto);letter-spacing:var(--black-letreiro-tracking);text-transform:uppercase;background:var(--black-silver-gradient);-webkit-text-fill-color:transparent;background-clip:text;font-weight:400;line-height:1}
+    .black-letreiro-item .black-letreiro-icone{width:var(--black-letreiro-icone);height:var(--black-letreiro-icone);color:var(--black-letreiro-icone-cor);filter:drop-shadow(var(--black-letreiro-icone-brilho));flex-shrink:0}
+    .black-letreiro-frase{clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;margin:0;position:absolute;overflow:hidden}
+    @keyframes black-letreiro-reflexo{0%{transform:translate(-100%)}45%,to{transform:translate(100vw)}}
+    .campanha-black-2026:has(.black-letreiro){--black-letreiro-reserva:var(--black-letreiro-altura)}
+    .black-letreiro~main{position:relative}
+    .black-letreiro~main.min-h-svh{min-height:calc(100svh - var(--black-letreiro-reserva))}
+  </style>
+  <link rel="stylesheet" href="_astro/registro.Bi5SOKmQ.css">
+  <style>
+    .marcas{align-items:center;gap:var(--brands-caption-gap,var(--sp-2));padding:var(--brands-block-space,var(--sp-1)) var(--brands-inline-space,var(--secao-x));border-top:var(--brands-border,1px solid var(--borda));grid-template-columns:minmax(0,1fr);display:grid}
+    .titulo{font-size:var(--brands-caption-size,var(--video-brands-caption-size));text-align:center;color:var(--brands-caption-color,var(--tinta-suave));line-height:1.5}
+    .logos{min-width:var(--brands-loop-min-width,auto);justify-content:space-around;align-items:center;gap:var(--brands-logo-gap,var(--sp-2));padding:0 var(--brands-logo-gap,var(--sp-2)) 0 0;flex:none;margin:0;list-style:none;display:flex}
+    .logo{width:var(--brands-logo-width,var(--video-marquee-logo));opacity:var(--brands-logo-opacity,.8);flex:none;place-items:center;display:grid}
+    .logo img{width:100%;height:var(--brands-logo-height,var(--video-brand-height));object-fit:contain;filter:brightness(0)invert()}
+    .janela{min-width:0;mask-image:var(--brands-edge-mask,none);-webkit-mask-image:var(--brands-edge-mask,none);overflow:hidden}
+    .trilho{width:max-content;animation:marcas-passando var(--brands-duration,var(--video-marquee-duration)) linear infinite;display:flex}
+    @keyframes marcas-passando{to{transform:translateX(var(--brands-loop-end,-50%))}}
+  </style>
+</head>
+<body class="tema-escuro campanha-black-2026" style="--cor-evento:#a9c8d8;--cor-evento-texto:#111318;--cor-evento-suave:rgb(169 200 216 / 10%);--cor-evento-rotulo:#a9c8d8" data-tem-cor="sim">
+
+
+<!-- TOP LETREIRO TICKER -->
+<div class="black-letreiro" data-astro-cid-flpssvsm>
+  <p class="black-letreiro-frase black-letreiro-texto" data-astro-cid-flpssvsm>Coytech Observabilidade Estratégica &amp; SRE</p>
+  <div class="black-letreiro-janela" aria-hidden="true" data-astro-cid-flpssvsm>
+    <div class="black-letreiro-trilho" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-grupo" data-astro-cid-flpssvsm>
+        
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Coytech Confiabilidade &amp; Observabilidade</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Monitoramento Zabbix 7.0 LTS &amp; Grafana Enterprise</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Bootcamp Intensivo de 7 Dias para Especialistas</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Consultoria B2B para Ambientes Críticos</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+  
+        
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Coytech Confiabilidade &amp; Observabilidade</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Monitoramento Zabbix 7.0 LTS &amp; Grafana Enterprise</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Bootcamp Intensivo de 7 Dias para Especialistas</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Consultoria B2B para Ambientes Críticos</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+  
+      </span>
+      <span class="black-letreiro-grupo" data-astro-cid-flpssvsm>
+        
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Coytech Confiabilidade &amp; Observabilidade</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Monitoramento Zabbix 7.0 LTS &amp; Grafana Enterprise</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Bootcamp Intensivo de 7 Dias para Especialistas</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Consultoria B2B para Ambientes Críticos</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+  
+        
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Coytech Confiabilidade &amp; Observabilidade</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Monitoramento Zabbix 7.0 LTS &amp; Grafana Enterprise</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Bootcamp Intensivo de 7 Dias para Especialistas</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+    <span class="black-letreiro-item" data-astro-cid-flpssvsm>
+      <span class="black-letreiro-texto" data-astro-cid-flpssvsm>Consultoria B2B para Ambientes Críticos</span>
+      <svg viewBox="0 0 256 256" class="size-5 shrink-0 black-letreiro-icone" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.07 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15"/></svg>
+    </span>
+  
+      </span>
+    </div>
+  </div>
+</div>
+<script type="module">
+var e=document.querySelector(`.black-letreiro`);
+if(e){let t=0,n=()=>{t=0;let n=Math.max(0,e.getBoundingClientRect().bottom);document.body.style.setProperty(`--black-letreiro-visivel`,`${n}px`)};addEventListener(`scroll`,()=>{t||=requestAnimationFrame(n)},{passive:!0}),n()}
+</script>
+
+<!-- NAVBAR -->
+<header class="relative z-10 border-b border-white/10" data-astro-cid-z7xolria>
+  <div class="mx-auto flex max-w-(--container-content) items-center justify-between px-5 sm:px-8 lg:px-12 py-4 lg:py-5" data-astro-cid-z7xolria>
+    <div class="flex items-center gap-6">
+      <a href="index.html" class="flex items-center gap-3 no-underline">
+        <img src="assets/imagem/logo.png" alt="Coytech Logo" class="h-8 sm:h-9 w-auto">
+      </a>
+      <span class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-ink-soft">
+        <span class="size-1.5 rounded-full bg-lime"></span>
+        Observabilidade B2B &amp; SRE
+      </span>
+    </div>
+
+    <!-- Navegação Desktop -->
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+      <a href="index.html" class="text-ink-soft hover:text-white transition-colors no-underline">Início</a>
+      <a href="consultoria-empresas.html" class="text-white font-semibold transition-colors no-underline">Consultoria B2B</a>
+      <a href="mentoria-carreira.html" class="text-ink-soft hover:text-white transition-colors no-underline">Mentoria SRE</a>
+      <a href="treinamentos.html" class="text-ink-soft hover:text-white transition-colors no-underline">Treinamentos</a>
+      <a href="sobre-contato.html" class="text-ink-soft hover:text-white transition-colors no-underline">Sobre &amp; Contato</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <p class="hidden xl:inline-flex items-center gap-2 rounded-full border border-ink/15 px-3 py-1.5 text-label text-ink-soft uppercase" data-astro-cid-z7xolria>
+        <span class="relative flex size-2" data-astro-cid-z7xolria>
+          <span class="absolute inline-flex size-full animate-ping rounded-full bg-lime opacity-70" data-astro-cid-z7xolria></span>
+          <span class="relative inline-flex size-2 rounded-full bg-lime" data-astro-cid-z7xolria></span>
+        </span>
+        Operação Ativa 24/7 · Zabbix 7.0
+      </p>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20de%20observabilidade%20para%20minha%20empresa" class="inline-flex items-center justify-center gap-2 rounded-full text-label font-medium uppercase no-underline transition-[background-color,color,transform] duration-(--duration-quick) ease-(--ease-out-strong) active:scale-[0.97] bg-lime text-lime-ink hover:bg-lime-strong h-9 px-4 sm:px-5">
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+<main data-astro-cid-z7xolria>
+
+
+<!-- HERO SECTION: B2B OBSERVABILIDADE -->
+<section class="section-rhythm relative overflow-hidden bg-surface text-ink pagina-abertura py-10 sm:py-14 lg:py-20">
+  <div class="mx-auto w-full max-w-(--container-content) px-5 sm:px-8 lg:px-12">
+    <!-- Ambient 3D Glow Lights -->
+    <div class="black-stage pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div class="black-hero-ambient">
+        <span class="black-hero-light black-hero-light--blue"></span>
+        <span class="black-hero-light black-hero-light--ice"></span>
+        <span class="black-hero-light black-hero-light--navy"></span>
+      </div>
+    </div>
+
+    <div class="pagina-abertura-grade relative z-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:gap-16 lg:items-start">
+      <div class="black-hero-copy min-w-0">
+        <p class="black-hero-date text-label uppercase">
+          <span>Soluções Corporativas</span>
+          <span class="black-hero-date-divider" aria-hidden="true"></span>
+          <span>Monitoramento &amp; SRE</span>
+        </p>
+        <h1 style="max-width:24ch" class="font-display font-normal text-pretty text-display-lg black-hero-title text-white">
+          Pare de descobrir incidentes pelos seus clientes.<br>
+          <span class="black-silver-type">Tenha controle absoluto da sua infraestrutura 24/7.</span>
+        </h1>
+        <p class="font-body text-lead text-ink-soft text-pretty black-hero-subtitle" style="max-width:43ch">
+          Projetamos, implementamos e otimizamos arquiteturas de monitoramento e observabilidade corporativa com Zabbix, Grafana, Prometheus e OpenTelemetry.
+        </p>
+
+        <!-- Metric Badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8">
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-sm">
+            <div class="text-2xl lg:text-3xl font-extrabold text-[#a9c8d8]">-78%</div>
+            <div class="text-[11px] uppercase tracking-wider text-ink-soft mt-1">MTTR Médio</div>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-sm">
+            <div class="text-2xl lg:text-3xl font-extrabold text-white">Zero</div>
+            <div class="text-[11px] uppercase tracking-wider text-ink-soft mt-1">Falhas Silenciosas</div>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-sm">
+            <div class="text-2xl lg:text-3xl font-extrabold text-[#a9c8d8]">+99.9%</div>
+            <div class="text-[11px] uppercase tracking-wider text-ink-soft mt-1">Uptime SLA</div>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-sm">
+            <div class="text-2xl lg:text-3xl font-extrabold text-white">24/7</div>
+            <div class="text-[11px] uppercase tracking-wider text-ink-soft mt-1">Alerta Proativo</div>
+          </div>
+        </div>
+
+        <figure class="black-hero-portrait min-w-0 mb-8">
+          <div class="black-portrait-light" style="overflow:hidden;border-radius:20px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 50px rgba(0,0,0,0.7);position:relative;">
+            <img src="assets/imagem/noc-monitoring-center.jpg" alt="Centro de Operações de Confiabilidade Coytech" class="black-portrait-image" style="width:100%;height:320px;object-fit:cover;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,11,14,0.92) 0%, rgba(10,11,14,0.15) 60%, transparent 100%);pointer-events:none;"></div>
+            <div style="position:absolute;bottom:20px;left:24px;right:24px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#a9c8d8;">Visibilidade de Ponta a Ponta</span>
+              <span style="font-size:11px;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,0.1);color:#FFFFFF;">Painéis NOC &amp; Executivos</span>
+            </div>
+          </div>
+        </figure>
+      </div>
+
+      <!-- Right Form Card: CTA Principal da SEÇÃO 1 -->
+      <div id="diagnostico-operacao" class="scroll-mt-8 rounded-panel border border-ink/10 bg-white p-6 shadow-xl shadow-ink/5 sm:p-8 lg:sticky lg:top-8" data-astro-cid-z7xolria>
+        <div class="captura-fluxo w-full captura-etapa" data-tom="claro" data-apresentacao="glass">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="size-2 rounded-full bg-lime animate-pulse"></span>
+            <span class="text-xs uppercase tracking-wider text-ink-soft font-semibold">Diagnóstico da Operação</span>
+          </div>
+          <h2 class="font-display text-xl text-ink font-semibold">Agendar Diagnóstico Gratuito da Operação</h2>
+          <p class="mt-1 mb-6 text-sm text-ink-soft">Converse com nossos arquitetos seniores e descubra onde sua infraestrutura está vulnerável a quedas.</p>
+          
+          <form class="grid gap-4" action="https://wa.me/5511999999999" method="GET" target="_blank">
+            <div class="flex flex-col gap-1.5">
+              <label for="b2b-nome" class="text-label font-medium uppercase text-ink">Nome e Cargo *</label>
+              <input id="b2b-nome" type="text" required placeholder="Ex.: Marcos Silva - Coordenador de TI" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="nome_cargo">
+            </div>
+            
+            <div class="flex flex-col gap-1.5">
+              <label for="b2b-email" class="text-label font-medium uppercase text-ink">E-mail Corporativo *</label>
+              <input id="b2b-email" type="email" required placeholder="marcos@empresa.com.br" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="email">
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label for="b2b-whats" class="text-label font-medium uppercase text-ink">WhatsApp com DDD *</label>
+              <input id="b2b-whats" type="tel" required placeholder="(11) 99999-9999" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="whatsapp">
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label for="b2b-tamanho" class="text-label font-medium uppercase text-ink">Tamanho da Infraestrutura</label>
+              <select id="b2b-tamanho" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="tamanho_infra">
+                <option value="50-200">50 a 200 servidores/hosts</option>
+                <option value="200-1000">200 a 1.000 servidores/hosts</option>
+                <option value="1000+">Mais de 1.000 servidores (Enterprise)</option>
+                <option value="nuvem-hibrida">Nuvem Híbrida / Kubernetes</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label for="b2b-desafio" class="text-label font-medium uppercase text-ink">Principal Desafio Hoje</label>
+              <input id="b2b-desafio" type="text" placeholder="Ex.: Fadiga de alertas e lentidões sem causa raiz" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="desafio">
+            </div>
+
+            <button type="submit" class="mt-2 inline-flex items-center justify-center gap-2 rounded-full text-label font-medium uppercase no-underline transition-[background-color,color,transform] duration-(--duration-quick) ease-(--ease-out-strong) active:scale-[0.97] bg-lime text-lime-ink hover:bg-lime-strong h-11 px-6 w-full cursor-pointer font-semibold">
+              Agendar Diagnóstico Gratuito da Operação
+              <svg viewBox="0 0 20 20" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10m-4-4l4 4-4 4"/></svg>
+            </button>
+
+            <p class="text-center text-[12px] text-ink-softer mt-2">
+              Privacidade garantida. Conversa direta com engenheiro especialista em observabilidade.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 2: DORES FREQUENTES DO GESTOR DE TI -->
+<section class="section-rhythm relative overflow-hidden bg-surface text-ink py-16 border-t border-white/10">
+  <div class="mx-auto w-full max-w-(--container-content) px-5 sm:px-8 lg:px-12">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs uppercase tracking-wider text-ink-soft font-semibold">Diagnóstico de Sintomas</span>
+      <h2 class="font-display text-display-md text-white mt-3">
+        Sua equipe passa mais tempo apagando incêndios do que inovando?
+      </h2>
+      <p class="text-ink-soft mt-3 text-base">
+        Identifique os quatro gargalos que silenciosamente drenam recursos, sobrecarregam sua equipe e expõem a empresa ao risco de paradas.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Dor 1 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm flex flex-col justify-between">
+        <div>
+          <div class="size-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 mb-4 font-bold">!</div>
+          <h3 class="font-display text-lg text-white font-medium mb-2">Fadiga de Alertas</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">
+            Centenas de e-mails e notificações inúteis chegam todos os dias, fazendo incidentes graves passarem despercebidos.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-red-400/80 font-medium">Consequência: Falhas críticas ignoradas</div>
+      </div>
+
+      <!-- Dor 2 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm flex flex-col justify-between">
+        <div>
+          <div class="size-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 font-bold">?</div>
+          <h3 class="font-display text-lg text-white font-medium mb-2">Falta de Métricas de Negócio</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">
+            Dashboards técnicos que a diretoria não entende e que não mostram o impacto financeiro de lentidões.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-amber-400/80 font-medium">Consequência: Dificuldade de justificar investimentos</div>
+      </div>
+
+      <!-- Dor 3 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm flex flex-col justify-between">
+        <div>
+          <div class="size-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-4 font-bold">/</div>
+          <h3 class="font-display text-lg text-white font-medium mb-2">Sistemas Fragmentados</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">
+            Servidores legados, nuvem e microsserviços sem um ponto central de visibilidade.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-blue-400/80 font-medium">Consequência: Conflito e demora entre times</div>
+      </div>
+
+      <!-- Dor 4 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm flex flex-col justify-between">
+        <div>
+          <div class="size-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 font-bold">⏱</div>
+          <h3 class="font-display text-lg text-white font-medium mb-2">MTTR Elevado</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">
+            Demora excessiva para identificar a causa raiz quando o sistema apresenta indisponibilidade.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/5 text-xs text-purple-400/80 font-medium">Consequência: Prejuízos financeiros e dano à marca</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 3: NOSSOS SERVIÇOS CORPORATIVOS -->
+<section class="section-rhythm relative overflow-hidden bg-surface text-ink py-20 border-t border-white/10">
+  <div class="mx-auto w-full max-w-(--container-content) px-5 sm:px-8 lg:px-12">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-xs uppercase tracking-wider text-ink-soft font-semibold">Portfólio B2B</span>
+      <h2 class="font-display text-display-md text-white mt-3">
+        Nossos Serviços Corporativos
+      </h2>
+      <p class="text-ink-soft mt-3 text-base">
+        Arquiteturas sob medida desenhadas para eliminar gargalos e garantir estabilidade operacional ininterrupta.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Serviço 1 -->
+      <div class="rounded-panel border border-white/10 bg-white/5 p-8 backdrop-blur-sm relative overflow-hidden group hover:border-white/20 transition-all">
+        <div class="text-xs uppercase tracking-wider text-[#a9c8d8] font-semibold mb-2">01 · Infraestrutura &amp; Coleta</div>
+        <h3 class="font-display text-2xl text-white font-medium mb-3">1. Implantação e Modernização de Zabbix</h3>
+        <p class="text-sm text-ink-soft leading-relaxed mb-6">
+          Estruturamos ambientes de alta performance capazes de monitorar dezenas de milhares de ativos com estabilidade e precisão.
+        </p>
+        <ul class="space-y-3 text-sm text-ink-soft">
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Configuração de templates refinados, proxies distribuídos e triggers inteligentes.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Coleta profunda de métricas de redes, hardware, bancos de dados e aplicações.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Redução drástica de falsos positivos.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Serviço 2 -->
+      <div class="rounded-panel border border-white/10 bg-white/5 p-8 backdrop-blur-sm relative overflow-hidden group hover:border-white/20 transition-all">
+        <div class="text-xs uppercase tracking-wider text-[#a9c8d8] font-semibold mb-2">02 · Inteligência Visual</div>
+        <h3 class="font-display text-2xl text-white font-medium mb-3">2. Engenharia de Visualização com Grafana</h3>
+        <p class="text-sm text-ink-soft leading-relaxed mb-6">
+          Transformamos telemetria dispersa em painéis claros e acionáveis para telas operacionais e decisões executivas de negócio.
+        </p>
+        <ul class="space-y-3 text-sm text-ink-soft">
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Criação de dashboards executivos, táticos e operacionais sob medida.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Integração de múltiplos data sources (bancos relacionais, time-series, cloud).</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Dashboards em tempo real para telas de NOC e salas de guerra.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Serviço 3 -->
+      <div class="rounded-panel border border-white/10 bg-white/5 p-8 backdrop-blur-sm relative overflow-hidden group hover:border-white/20 transition-all">
+        <div class="text-xs uppercase tracking-wider text-[#a9c8d8] font-semibold mb-2">03 · Telemetria Moderna</div>
+        <h3 class="font-display text-2xl text-white font-medium mb-3">3. Arquitetura de Observabilidade Avançada</h3>
+        <p class="text-sm text-ink-soft leading-relaxed mb-6">
+          Vá muito além de saber se um servidor está ligado. Rastreie requisições de ponta a ponta em tempo real.
+        </p>
+        <ul class="space-y-3 text-sm text-ink-soft">
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Implementação dos 3 pilares: Métricas, Logs centralizados e Tracing distribuído.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Stack moderna: Prometheus, Loki, Tempo e OpenTelemetry.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Monitoramento de microserviços e esteiras de Kubernetes.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Serviço 4 -->
+      <div class="rounded-panel border border-white/10 bg-white/5 p-8 backdrop-blur-sm relative overflow-hidden group hover:border-white/20 transition-all">
+        <div class="text-xs uppercase tracking-wider text-[#a9c8d8] font-semibold mb-2">04 · Continuidade &amp; Autonomia</div>
+        <h3 class="font-display text-2xl text-white font-medium mb-3">4. Treinamento In-Company &amp; Governança</h3>
+        <p class="text-sm text-ink-soft leading-relaxed mb-6">
+          Garantimos que sua equipe interna tenha autonomia total sobre o ambiente, eliminando qualquer dependência técnica.
+        </p>
+        <ul class="space-y-3 text-sm text-ink-soft">
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Capacitação direta do seu time de sustentação técnica.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Alinhamento às melhores práticas de ITIL e governança corporativa.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="size-1.5 rounded-full bg-lime mt-2 shrink-0"></span>
+            <span>Documentação técnica detalhada entregue ao final do projeto.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 4: COMO FUNCIONA O PROCESSO -->
+<section class="section-rhythm relative overflow-hidden bg-surface text-ink py-20 border-t border-white/10">
+  <div class="mx-auto w-full max-w-(--container-content) px-5 sm:px-8 lg:px-12">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-xs uppercase tracking-wider text-ink-soft font-semibold">Metodologia Comprovada</span>
+      <h2 class="font-display text-display-md text-white mt-3">
+        Como Funciona o Processo
+      </h2>
+      <p class="text-ink-soft mt-3 text-base">
+        Um fluxo estruturado em 4 etapas objetivas para garantir entrega rápida, sem interrupção da sua operação.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Passo 1 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm relative">
+        <span class="text-xs font-bold text-lime uppercase tracking-wider">Etapa 01</span>
+        <h3 class="font-display text-lg text-white font-medium mt-2 mb-3">Diagnóstico &amp; Mapeamento</h3>
+        <p class="text-sm text-ink-soft leading-relaxed">
+          Avaliamos sua topologia atual, gargalos e metas operacionais.
+        </p>
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm relative">
+        <span class="text-xs font-bold text-lime uppercase tracking-wider">Etapa 02</span>
+        <h3 class="font-display text-lg text-white font-medium mt-2 mb-3">Plano Diretor de Observabilidade</h3>
+        <p class="text-sm text-ink-soft leading-relaxed">
+          Desenhamos a arquitetura ideal sem desperdício de licenças ou recursos.
+        </p>
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm relative">
+        <span class="text-xs font-bold text-lime uppercase tracking-wider">Etapa 03</span>
+        <h3 class="font-display text-lg text-white font-medium mt-2 mb-3">Mão na Massa &amp; Rollout</h3>
+        <p class="text-sm text-ink-soft leading-relaxed">
+          Configuração, automação e criação de painéis inteligentes.
+        </p>
+      </div>
+
+      <!-- Passo 4 -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm relative">
+        <span class="text-xs font-bold text-lime uppercase tracking-wider">Etapa 04</span>
+        <h3 class="font-display text-lg text-white font-medium mt-2 mb-3">Handover &amp; Treinamento</h3>
+        <p class="text-sm text-ink-soft leading-relaxed">
+          Sua equipe assume o controle com documentação e treinamento completo.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 5: CTA / FORMULÁRIO DE CONTATO B2B -->
+<section id="proposta-comercial" class="section-rhythm relative overflow-hidden bg-surface text-ink py-20 border-t border-white/10">
+  <div class="mx-auto w-full max-w-(--container-content) px-5 sm:px-8 lg:px-12">
+    <div class="rounded-2xl border border-white/10 bg-white/5 p-8 lg:p-14 backdrop-blur-sm relative overflow-hidden">
+      <!-- Glow Decorativo -->
+      <div class="pointer-events-none absolute -top-24 -right-24 size-96 rounded-full bg-lime/10 blur-3xl"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="text-xs uppercase tracking-wider text-lime font-bold">Inicie Agora</span>
+          <h2 class="font-display text-display-md text-white mt-2 mb-4">
+            Vamos blindar a estabilidade da sua operação?
+          </h2>
+          <p class="text-ink-soft text-base leading-relaxed mb-6">
+            Elimine falhas silenciosas, proteja seu SLA corporativo e coloque dashboards inteligentes na tela da sua diretoria. Preencha os dados ao lado para receber nossa proposta comercial personalizada.
+          </p>
+
+          <div class="space-y-4 text-sm text-ink-soft">
+            <div class="flex items-center gap-3">
+              <span class="size-2 rounded-full bg-lime"></span>
+              <span>Análise preliminar sem custo da sua infraestrutura</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="size-2 rounded-full bg-lime"></span>
+              <span>Arquitetura dimensionada sob medida para sua stack</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="size-2 rounded-full bg-lime"></span>
+              <span>Atendimento ágil direto por engenheiros certificados</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário da SEÇÃO 5 -->
+        <div class="rounded-panel border border-ink/10 bg-white p-6 sm:p-8 shadow-2xl">
+          <form class="grid gap-4" action="https://wa.me/5511999999999" method="GET" target="_blank">
+            <div class="flex flex-col gap-1.5">
+              <label for="form-nome-cargo" class="text-label font-medium uppercase text-ink">Nome e Cargo *</label>
+              <input id="form-nome-cargo" type="text" required placeholder="Ex.: Rodrigo Silva - CTO" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="nome_cargo">
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label for="form-email" class="text-label font-medium uppercase text-ink">E-mail Corporativo *</label>
+              <input id="form-email" type="email" required placeholder="rodrigo@empresa.com.br" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="email">
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label for="form-infra" class="text-label font-medium uppercase text-ink">Tamanho da Infraestrutura (Ex: Servidores / Nuvem) *</label>
+              <input id="form-infra" type="text" required placeholder="Ex.: 300 VMs na AWS + 80 servidores físicos" class="campo h-(--size-control) px-3.5 w-full rounded-md border text-sm" name="tamanho_infra">
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label for="form-desafio" class="text-label font-medium uppercase text-ink">Principal desafio hoje *</label>
+              <textarea id="form-desafio" required rows="3" placeholder="Descreva brevemente sua maior dor hoje (ex.: lentidão intermitente, falta de métricas de negócio, alertas demais)..." class="campo p-3 w-full rounded-md border text-sm" name="desafio"></textarea>
+            </div>
+
+            <button type="submit" class="mt-2 inline-flex items-center justify-center gap-2 rounded-full text-label font-medium uppercase no-underline transition-[background-color,color,transform] duration-(--duration-quick) ease-(--ease-out-strong) active:scale-[0.97] bg-lime text-lime-ink hover:bg-lime-strong h-11 px-6 w-full cursor-pointer font-semibold">
+              Solicitar Proposta Comercial Personalizada
+              <svg viewBox="0 0 20 20" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10m-4-4l4 4-4 4"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SEÇÃO HORIZON FOOTER GLOW (BLACK DESIGN SYSTEM) -->
+<section id="proximo-capitulo" class="section-rhythm relative overflow-hidden bg-surface text-ink black-horizon-footer">
+  <div class="black-horizon-stage" aria-hidden="true">
+    <div class="black-horizon-light black-horizon-light--glow"></div>
+    <div class="black-horizon-light black-horizon-light--beam"></div>
+    <div class="black-horizon-sky"></div>
+    <div class="black-horizon-curtain"></div>
+    <div class="black-horizon-ground"></div>
+  </div>
+  <div class="mx-auto w-full max-w-(--container-content) px-5 sm:px-8 lg:px-12 relative z-10 text-center flex flex-col items-center">
+    <h2 style="max-width:23ch" class="font-display font-normal text-pretty text-display-lg black-footer-title">
+      Sua infraestrutura sem apagões.<br>
+      <span class="black-silver-type">Sua carreira em outro patamar.</span>
+    </h2>
+    <p class="black-footer-date text-label uppercase">Coytech · Observabilidade Estratégica &amp; SRE</p>
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20de%20observabilidade%20com%20a%20Coytech" class="inline-flex items-center justify-center gap-2 rounded-full text-label font-medium uppercase no-underline transition-[background-color,color,transform] duration-(--duration-quick) ease-(--ease-out-strong) active:scale-[0.97] bg-lime text-lime-ink hover:bg-lime-strong h-11 px-6">
+      Agendar Diagnóstico Gratuito 
+      <svg viewBox="0 0 24 24" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17L17 7"/></svg>
+    </a>
+  </div>
+  <nav class="black-footer-navigation" aria-label="Navegue na Coytech">
+    <a href="consultoria-empresas.html" class="anel-foco">
+      <span class="text-label">01</span><span>Consultoria B2B</span>
+      <svg viewBox="0 0 24 24" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17L17 7"/></svg>
+    </a>
+    <a href="mentoria-carreira.html" class="anel-foco">
+      <span class="text-label">02</span><span>Mentoria SRE</span>
+      <svg viewBox="0 0 24 24" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17L17 7"/></svg>
+    </a>
+    <a href="treinamentos.html" class="anel-foco">
+      <span class="text-label">03</span><span>Treinamentos</span>
+      <svg viewBox="0 0 24 24" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17L17 7"/></svg>
+    </a>
+    <a href="sobre-contato.html" class="anel-foco">
+      <span class="text-label">04</span><span>Sobre &amp; Contato</span>
+      <svg viewBox="0 0 24 24" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10M7 17L17 7"/></svg>
+    </a>
+  </nav>
+</section>
+</main>
+
+<!-- FOOTER OFICIAL -->
+<footer class="border-t border-white/10 bg-surface py-12 text-sm text-ink-soft">
+  <div class="mx-auto max-w-(--container-content) px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <img src="assets/imagem/logo.png" alt="Coytech" class="h-7 w-auto">
+      <span class="text-xs text-ink-softer">© 2026 Coytech Tecnologia &amp; Observabilidade. Todos os direitos reservados.</span>
+    </div>
+
+    <div class="flex items-center gap-6 text-xs uppercase tracking-wider">
+      <a href="index.html" class="hover:text-white transition-colors no-underline">Início</a>
+      <a href="consultoria-empresas.html" class="hover:text-white transition-colors no-underline">Consultoria B2B</a>
+      <a href="mentoria-carreira.html" class="hover:text-white transition-colors no-underline">Mentoria SRE</a>
+      <a href="treinamentos.html" class="hover:text-white transition-colors no-underline">Treinamentos</a>
+      <a href="sobre-contato.html" class="hover:text-white transition-colors no-underline">Contato</a>
+    </div>
+
+    <!-- Mega Ads Footer Attribution -->
+    <div class="flex items-center gap-2 text-xs text-ink-softer">
+      <span>Feito por:</span>
+      <a href="https://megaads.com.br/" target="_blank" rel="noopener" class="opacity-80 hover:opacity-100 transition-opacity flex items-center">
+        <img src="assets/imagem/mega-ads-logo.webp" alt="Mega Ads" class="h-4 w-auto">
+      </a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+
